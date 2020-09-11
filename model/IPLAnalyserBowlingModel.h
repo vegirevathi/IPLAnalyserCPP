@@ -58,6 +58,11 @@ list<MostWkts> IPLAnalyserBowlingModel::getSortedField(int sortByField) {
             bowlerList.sort([] (const MostWkts firstPlayer, const MostWkts secondPlayer) {
                 return firstPlayer.strikeRate > secondPlayer.strikeRate && firstPlayer.average > secondPlayer.average; });
             break;
+        case BOWLING_AVERAGE_AND_MAXIMUM_WICKETS:
+            bowlerList.sort([] (const MostWkts firstPlayer, const MostWkts secondPlayer) {
+                return firstPlayer.average > secondPlayer.average && ((firstPlayer.fourWickets * 4) + (firstPlayer.fiveWickets * 5)) >
+                                                                        ((secondPlayer.fourWickets * 4) + (secondPlayer.fiveWickets * 5)); });
+            break;
     }
     return bowlerList;
 }
