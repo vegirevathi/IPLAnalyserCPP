@@ -32,7 +32,8 @@ void IPLAnalyserBowlingView::displayMenu() {
     cout << "Enter 2 to get top striking average data" << endl;
     cout << "Enter 3 to get top economy rate data" << endl;
     cout << "Enter 4 to get top striking rate with highest 4 wickets and 5 wickets" << endl;
-    cout << "Enter 5 to quit" << endl;
+    cout << "Enter 5 to get top striking rate and bowling average players" << endl;
+    cout << "Enter 6 to quit" << endl;
     cout << "Enter choice" << endl;
 }
 
