@@ -31,7 +31,8 @@ void IPLAnalyserBowlingView::displayMenu() {
     cout << "Enter 1 to get top bowling averages data" << endl;
     cout << "Enter 2 to get top striking average data" << endl;
     cout << "Enter 3 to get top economy rate data" << endl;
-    cout << "Enter 4 to quit" << endl;
+    cout << "Enter 4 to get top striking rate with highest 4 wickets and 5 wickets" << endl;
+    cout << "Enter 5 to quit" << endl;
     cout << "Enter choice" << endl;
 }
 
@@ -44,5 +45,7 @@ void IPLAnalyserBowlingView::displayPlayersData(list<MostWkts> bowlersData) {
         cout << "Bowling Average: " << playerNum->average << endl;
         cout << "Striking Rate: " << playerNum->strikeRate << endl;
         cout << "Economy rate: " << playerNum->economyRate << endl;
+        cout << "Four Wickets: " << playerNum->fourWickets << endl;
+        cout << "Five Wickets: " << playerNum->fiveWickets << endl;
     }
 }
