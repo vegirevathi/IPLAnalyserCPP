@@ -28,7 +28,8 @@ void IPLAnalyserView::displayMenu() {
     cout << "Enter 1 to get top batting averages data" << endl;
     cout << "Enter 2 to get top striking rate data" << endl;
     cout << "Enter 3 to get cricketers who hit maximum 4's and 6's" << endl;
-    cout << "Enter 4 to quit" << endl;
+    cout << "Enter 4 to get cricketers with best strike rate and maximum 4's and 6's" << endl;
+    cout << "Enter 5 to quit" << endl;
     cout << "Enter choice" << endl;
 }
 

@@ -15,9 +15,6 @@ class IPLAnalyser {
 
     public:
     void loadIPLData(string filePath);
-    list<MostRuns> getSortedBattingAvgData();
-    list<MostRuns> getSortedStrikingRateData();
-    list<MostRuns> getSortedMaximumFoursAndSixesData();
     list<MostRuns> getSortedField(int sortByField);
 };
 #endif
@@ -48,19 +45,19 @@ list<MostRuns> IPLAnalyser::getSortedField(int sortByField) {
     switch(sortByField) {
         case BATTING_AVERAGE:
             batsmanList.sort([] (const MostRuns firstPlayer, const MostRuns secondPlayer) {
-                return firstPlayer.average == secondPlayer.average ? &firstPlayer > &secondPlayer : firstPlayer.average > secondPlayer.average;
-            });
+                return firstPlayer.average == secondPlayer.average ? &firstPlayer > &secondPlayer : firstPlayer.average > secondPlayer.average;});
             break;
         case STRIKE_RATE:
             batsmanList.sort([] (const MostRuns firstPlayer, const MostRuns secondPlayer) {
-                return firstPlayer.strikeRate == secondPlayer.strikeRate ? &firstPlayer > &secondPlayer : firstPlayer.strikeRate > secondPlayer.strikeRate;
-            });
+                return firstPlayer.strikeRate == secondPlayer.strikeRate ? &firstPlayer > &secondPlayer : firstPlayer.strikeRate > secondPlayer.strikeRate;});
             break;
         case MAXIMUM_FOURS_SIXES:
             batsmanList.sort([] (const MostRuns firstPlayer, const MostRuns secondPlayer) {
-                return (firstPlayer.fours + firstPlayer.sixes) == (secondPlayer.fours + secondPlayer.sixes) ? &firstPlayer > &secondPlayer :
-                             (firstPlayer.fours + firstPlayer.sixes) > (secondPlayer.fours + secondPlayer.sixes);
-            });
+                return (firstPlayer.fours + firstPlayer.sixes) > (secondPlayer.fours + secondPlayer.sixes);});
+            break;
+        case STRIKE_RATE_AND_MAX_FOURS_SIXES:
+            batsmanList.sort([] (const MostRuns firstPlayer, const MostRuns secondPlayer) {
+                return firstPlayer.strikeRate > secondPlayer.strikeRate && (firstPlayer.fours + firstPlayer.sixes) > (secondPlayer.fours + secondPlayer.sixes);});
             break;
     }
     return batsmanList;
