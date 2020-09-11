@@ -15,6 +15,7 @@ class IPLAnalyser {
     public:
     void loadIPLData(string filePath);
     list<MostRuns> getSortedBattingAvgData();
+    list<MostRuns> getSortedStrikingRateData();
 };
 #endif
 
@@ -47,4 +48,15 @@ list<MostRuns> IPLAnalyser::getSortedBattingAvgData() {
             return &firstPlayer > &secondPlayer;
         return firstPlayer.average > secondPlayer.average;
     });
+    return batsmanList;
+}
+
+list<MostRuns> IPLAnalyser::getSortedStrikingRateData() {
+    batsmanList.sort([] (const MostRuns firstPlayer, const MostRuns secondPlayer)
+    {
+        if(firstPlayer.strikeRate == secondPlayer.strikeRate)
+            return &firstPlayer > &secondPlayer;
+        return firstPlayer.strikeRate > secondPlayer.strikeRate;
+    });
+    return batsmanList;
 }
