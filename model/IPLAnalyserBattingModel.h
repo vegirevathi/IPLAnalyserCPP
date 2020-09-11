@@ -1,25 +1,19 @@
-#ifndef IPLANALYSER_H
-#define IPLANALYSER_H
-
 #include <list>
 #include<vector>
 #include "../CSVLibrary/CsvFileoperations.h"
 #include "MostRuns.h"
-#include "SortByFields.h"
+#include "SortByBattingFields.h"
 
-using namespace std;
-
-class IPLAnalyser {
+class IPLAnalyserBattingModel {
     list <MostRuns> batsmanList;
-    SortByField sortByField;
+    SortByBattingField sortByField;
 
     public:
     void loadIPLData(string filePath);
     list<MostRuns> getSortedField(int sortByField);
 };
-#endif
 
-void IPLAnalyser::loadIPLData(string filePath) {
+void IPLAnalyserBattingModel::loadIPLData(string filePath) {
     CSVFileOperations csvFileOperations;
     list<vector<string>> mostRunsCsvList = csvFileOperations.readFile(filePath);
 
@@ -41,7 +35,7 @@ void IPLAnalyser::loadIPLData(string filePath) {
     }
 }
 
-list<MostRuns> IPLAnalyser::getSortedField(int sortByField) {
+list<MostRuns> IPLAnalyserBattingModel::getSortedField(int sortByField) {
     switch(sortByField) {
         case BATTING_AVERAGE:
             batsmanList.sort([] (const MostRuns firstPlayer, const MostRuns secondPlayer) {

@@ -1,9 +1,12 @@
+#ifndef MOSTWKTS_H
+#define MOSTWKTS_H
+
 #include <iostream>
 using namespace std;
 
-class MostWkts {
-
-private:
+class MostWkts
+{
+public:
     string POS;
     string player;
     int matches;
@@ -11,11 +14,12 @@ private:
     double overs;
     int runs;
     int wkts;
-    double average;
-    double strikeRate;
+    string average;
+    string strikeRate;
     int fourWickets;
     int fiveWickets;
 
 public:
     MostWkts() {}
 };
+#endif

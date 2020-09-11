@@ -1,36 +1,32 @@
-#ifndef IPLANALYSERVIEW_H
-#define IPLANALYSERVIEW_H
-
 #include <vector>
 #include <list>
 #include "../model/MostRuns.h"
 
 using namespace std;
 
-class IPLAnalyserView {
+class IPLAnalyserBattingView {
 public:
 
-    IPLAnalyserView() {}
+    IPLAnalyserBattingView() {}
 
     void displayWelcomeMessage();
     int displayPlayerCount();
     void displayMenu();
     void displayPlayersData(list<MostRuns> batsmanData);
 };
-#endif
 
-void IPLAnalyserView::displayWelcomeMessage() {
+void IPLAnalyserBattingView::displayWelcomeMessage() {
     cout << "Welcome to IPL Analyser" << endl;
 }
 
-int IPLAnalyserView::displayPlayerCount() {
+int IPLAnalyserBattingView::displayPlayerCount() {
     cout << "Enter num of players to display" << endl;
     int playerCount;
     cin >> playerCount;
     return playerCount;
 }
 
-void IPLAnalyserView::displayMenu() {
+void IPLAnalyserBattingView::displayMenu() {
     cout << endl;
     cout << "Enter 1 to get top batting averages data" << endl;
     cout << "Enter 2 to get top striking rate data" << endl;
@@ -42,7 +38,7 @@ void IPLAnalyserView::displayMenu() {
     cout << "Enter choice" << endl;
 }
 
-void IPLAnalyserView::displayPlayersData(list<MostRuns> batsmanData) {
+void IPLAnalyserBattingView::displayPlayersData(list<MostRuns> batsmanData) {
     int count = 0;
     int playerCount = displayPlayerCount();
     for(auto playerNum = batsmanData.begin(); count < playerCount; playerNum++, count++) {
