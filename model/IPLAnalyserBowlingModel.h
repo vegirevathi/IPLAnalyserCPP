@@ -26,6 +26,7 @@ void IPLAnalyserBowlingModel::loadIPLData(string filePath) {
         mostWktsData.runs = stoi(playerNum->at(5));
         mostWktsData.wkts = stoi(playerNum->at(6));
         mostWktsData.average = (playerNum->at(8));
+        mostWktsData.economyRate = stod(playerNum->at(9));
         mostWktsData.strikeRate = (playerNum->at(10));
         mostWktsData.fourWickets = stoi(playerNum->at(11));
         mostWktsData.fiveWickets = stoi(playerNum->at(12));
@@ -43,6 +44,11 @@ list<MostWkts> IPLAnalyserBowlingModel::getSortedField(int sortByField) {
         case STRIKING_RATE:
             bowlerList.sort([] (const MostWkts firstPlayer, const MostWkts secondPlayer) {
                 return firstPlayer.strikeRate > secondPlayer.strikeRate; });
+            break;
+        case ECONOMY_RATE:
+            bowlerList.sort([] (const MostWkts firstPlayer, const MostWkts secondPlayer) {
+                return firstPlayer.economyRate > secondPlayer.economyRate; });
+            break;
     }
     return bowlerList;
 }

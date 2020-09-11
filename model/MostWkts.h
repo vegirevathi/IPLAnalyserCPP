@@ -15,6 +15,7 @@ public:
     int runs;
     int wkts;
     string average;
+    double economyRate;
     string strikeRate;
     int fourWickets;
     int fiveWickets;
