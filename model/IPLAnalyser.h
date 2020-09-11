@@ -1,21 +1,24 @@
 #ifndef IPLANALYSER_H
 #define IPLANALYSER_H
 
-#include <iostream>
 #include <list>
 #include<vector>
 #include "../CSVLibrary/CsvFileoperations.h"
 #include "MostRuns.h"
+#include "SortByFields.h"
 
 using namespace std;
 
 class IPLAnalyser {
     list <MostRuns> batsmanList;
+    SortByField sortByField;
 
     public:
     void loadIPLData(string filePath);
     list<MostRuns> getSortedBattingAvgData();
     list<MostRuns> getSortedStrikingRateData();
+    list<MostRuns> getSortedMaximumFoursAndSixesData();
+    list<MostRuns> getSortedField(int sortByField);
 };
 #endif
 
@@ -41,22 +44,24 @@ void IPLAnalyser::loadIPLData(string filePath) {
     }
 }
 
-list<MostRuns> IPLAnalyser::getSortedBattingAvgData() {
-    batsmanList.sort([] (const MostRuns firstPlayer, const MostRuns secondPlayer)
-    {
-        if(firstPlayer.average == secondPlayer.average)
-            return &firstPlayer > &secondPlayer;
-        return firstPlayer.average > secondPlayer.average;
-    });
-    return batsmanList;
-}
-
-list<MostRuns> IPLAnalyser::getSortedStrikingRateData() {
-    batsmanList.sort([] (const MostRuns firstPlayer, const MostRuns secondPlayer)
-    {
-        if(firstPlayer.strikeRate == secondPlayer.strikeRate)
-            return &firstPlayer > &secondPlayer;
-        return firstPlayer.strikeRate > secondPlayer.strikeRate;
-    });
+list<MostRuns> IPLAnalyser::getSortedField(int sortByField) {
+    switch(sortByField) {
+        case BATTING_AVERAGE:
+            batsmanList.sort([] (const MostRuns firstPlayer, const MostRuns secondPlayer) {
+                return firstPlayer.average == secondPlayer.average ? &firstPlayer > &secondPlayer : firstPlayer.average > secondPlayer.average;
+            });
+            break;
+        case STRIKE_RATE:
+            batsmanList.sort([] (const MostRuns firstPlayer, const MostRuns secondPlayer) {
+                return firstPlayer.strikeRate == secondPlayer.strikeRate ? &firstPlayer > &secondPlayer : firstPlayer.strikeRate > secondPlayer.strikeRate;
+            });
+            break;
+        case MAXIMUM_FOURS_SIXES:
+            batsmanList.sort([] (const MostRuns firstPlayer, const MostRuns secondPlayer) {
+                return (firstPlayer.fours + firstPlayer.sixes) == (secondPlayer.fours + secondPlayer.sixes) ? &firstPlayer > &secondPlayer :
+                             (firstPlayer.fours + firstPlayer.sixes) > (secondPlayer.fours + secondPlayer.sixes);
+            });
+            break;
+    }
     return batsmanList;
 }
