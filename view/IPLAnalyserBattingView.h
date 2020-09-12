@@ -35,7 +35,8 @@ void IPLAnalyserBattingView::displayMenu() {
     cout << "Enter 5 to get cricketers with best strike rate and batting average" << endl;
     cout << "Enter 6 to get cricketers with best batting average and maximum runs" << endl;
     cout << "Enter 7 to get cricketers with maximum hundreds and best batting averages" << endl;
-    cout << "Enter 8 to quit" << endl;
+    cout << "Enter 8 to get cricketers with zero half centuries and zero centuries but with best batting averages" << endl;
+    cout << "Enter 9 to quit" << endl;
     cout << "Enter choice" << endl;
 }
 
@@ -49,7 +50,8 @@ void IPLAnalyserBattingView::displayPlayersData(list<MostRuns> batsmanData) {
         cout << " Maximum runs: " << playerNum->runs << endl;
         cout << " total fours: " << playerNum->fours << endl;
         cout << " total sixes: " << playerNum->sixes << endl;
-        cout << " total hunderds: " << playerNum->centuries << endl;
+        cout << " total centuries: " << playerNum->centuries << endl;
+        cout << " total half centuries: " << playerNum->halfCenturies << endl;
         cout << endl;
     }
 }

@@ -65,6 +65,10 @@ list<MostRuns> IPLAnalyserBattingModel::getSortedField(int sortByField) {
             batsmanList.sort([] (const MostRuns firstPlayer, const MostRuns secondPlayer) {
                 return firstPlayer.centuries > secondPlayer.centuries && firstPlayer.average > secondPlayer.average;});
             break;
+        case ZERO_HALF_CENTURIES_AND_ZERO_CENTURIES_MAXIMUM_BATTING_AVERAGE:
+            batsmanList.sort([] (const MostRuns firstPlayer, const MostRuns secondPlayer) {
+                return (firstPlayer.centuries == 0) && (secondPlayer.centuries == 0) && firstPlayer.average > secondPlayer.average;});
+            break;
     }
     return batsmanList;
 }
