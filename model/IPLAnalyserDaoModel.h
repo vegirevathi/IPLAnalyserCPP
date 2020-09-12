@@ -32,73 +32,73 @@ void IPLAnalyserDaoModel::loadIPLData(string filePath, int playerType) {
 list<IPLDao> IPLAnalyserDaoModel::getSortedField(int sortByField) {
     list <IPLDao> playersList;
     switch(sortByField) {
-        case BATTING_AVERAGE1:
+        case BATTING_AVERAGE:
             playersList = batsmanList;
             playersList.sort([] (const IPLDao firstPlayer, const IPLDao secondPlayer) {
                 return firstPlayer.battingAverage == secondPlayer.battingAverage ? &firstPlayer > &secondPlayer : firstPlayer.battingAverage > secondPlayer.battingAverage;});
             break;
-        case STRIKE_RATE1:
+        case STRIKE_RATE:
             playersList = batsmanList;
             playersList.sort([] (const IPLDao firstPlayer, const IPLDao secondPlayer) {
                 return firstPlayer.battingAverage == secondPlayer.battingAverage ? &firstPlayer > &secondPlayer : firstPlayer.battingAverage > secondPlayer.battingAverage;});
             break;
-        case MAXIMUM_FOURS_SIXES1:
+        case MAXIMUM_FOURS_SIXES:
             playersList = batsmanList;
             playersList.sort([] (const IPLDao firstPlayer, const IPLDao secondPlayer) {
                 return (firstPlayer.fours + firstPlayer.sixes) > (secondPlayer.fours + secondPlayer.sixes);});
             break;
-        case STRIKE_RATE_AND_MAX_FOURS_SIXES1:
+        case STRIKE_RATE_AND_MAX_FOURS_SIXES:
             playersList = batsmanList;
             playersList.sort([] (const IPLDao firstPlayer, const IPLDao secondPlayer) {
                 return firstPlayer.battingStrikeRate > secondPlayer.battingStrikeRate && (firstPlayer.fours + firstPlayer.sixes) > (secondPlayer.fours + secondPlayer.sixes);});
             break;
-        case STRIKE_RATE_AND_BATTING_AVERAGE1:
+        case STRIKE_RATE_AND_BATTING_AVERAGE:
             playersList = batsmanList;
             playersList.sort([] (const IPLDao firstPlayer, const IPLDao secondPlayer) {
                 return firstPlayer.battingStrikeRate > secondPlayer.battingStrikeRate && firstPlayer.battingAverage > secondPlayer.battingAverage;});
             break;
-        case BATTING_AVERAGE_AND_MAXIMUM_RUNS1:
+        case BATTING_AVERAGE_AND_MAXIMUM_RUNS:
             playersList = batsmanList;
             playersList.sort([] (const IPLDao firstPlayer, const IPLDao secondPlayer) {
                 return firstPlayer.runs > secondPlayer.runs && firstPlayer.battingAverage > secondPlayer.battingAverage;});
             break;
-        case BATTING_AVERAGE_AND_MAXIMUM_HUNDERDS1:
+        case BATTING_AVERAGE_AND_MAXIMUM_HUNDERDS:
             playersList = batsmanList;
             playersList.sort([] (const IPLDao firstPlayer, const IPLDao secondPlayer) {
                 return firstPlayer.centuries > secondPlayer.centuries && firstPlayer.battingAverage > secondPlayer.battingAverage;});
             break;
-        case ZERO_HALF_CENTURIES_AND_ZERO_CENTURIES_MAXIMUM_BATTING_AVERAGE1:
+        case ZERO_HALF_CENTURIES_AND_ZERO_CENTURIES_MAXIMUM_BATTING_AVERAGE:
             playersList = batsmanList;
             playersList.sort([] (const IPLDao firstPlayer, const IPLDao secondPlayer) {
                 return (firstPlayer.centuries == 0) && (secondPlayer.centuries == 0) && firstPlayer.battingAverage > secondPlayer.battingAverage;});
             break;
-        case BOWLING_AVERAGE1:
+        case BOWLING_AVERAGE:
             playersList = bowlerList;
             playersList.sort([] (const IPLDao firstPlayer, const IPLDao secondPlayer) {
                 return firstPlayer.bowlingAverage > secondPlayer.bowlingAverage; });
             break;
-        case STRIKING_RATE1:
+        case STRIKING_RATE:
             playersList = bowlerList;
             playersList.sort([] (const IPLDao firstPlayer, const IPLDao secondPlayer) {
                 return firstPlayer.bowlingStrikeRate > secondPlayer.bowlingStrikeRate; });
             break;
-        case ECONOMY_RATE1:
+        case ECONOMY_RATE:
             playersList = bowlerList;
             playersList.sort([] (const IPLDao firstPlayer, const IPLDao secondPlayer) {
                 return firstPlayer.economyRate > secondPlayer.economyRate; });
             break;
-        case STRIKING_RATE_WITH_4WKTS_5WKTS1:
+        case STRIKING_RATE_WITH_4WKTS_5WKTS:
             playersList = bowlerList;
             playersList.sort([] (const IPLDao firstPlayer, const IPLDao secondPlayer) {
                 return firstPlayer.bowlingStrikeRate > secondPlayer.bowlingStrikeRate && firstPlayer.fourWickets > secondPlayer.fourWickets
                         && firstPlayer.fiveWickets > secondPlayer.fiveWickets; });
             break;
-        case STRIKING_RATE_AND_BOWLING_AVERAGE1:
+        case STRIKING_RATE_AND_BOWLING_AVERAGE:
             playersList = bowlerList;
             playersList.sort([] (const IPLDao firstPlayer, const IPLDao secondPlayer) {
                 return firstPlayer.bowlingStrikeRate > secondPlayer.bowlingStrikeRate && firstPlayer.bowlingAverage > secondPlayer.bowlingAverage; });
             break;
-        case BOWLING_AVERAGE_AND_MAXIMUM_WICKETS1:
+        case BOWLING_AVERAGE_AND_MAXIMUM_WICKETS:
             playersList = bowlerList;
             playersList.sort([] (const IPLDao firstPlayer, const IPLDao secondPlayer) {
                 return firstPlayer.bowlingAverage > secondPlayer.bowlingAverage && ((firstPlayer.fourWickets * 4) + (firstPlayer.fiveWickets * 5)) >
