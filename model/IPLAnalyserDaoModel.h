@@ -1,5 +1,5 @@
 #include <list>
-#include<vector>
+#include <vector>
 #include "../CSVLibrary/CsvFileoperations.h"
 #include "IPLDao.h"
 #include "enumFields/SortType.h"
@@ -103,6 +103,11 @@ list<IPLDao> IPLAnalyserDaoModel::getSortedField(int sortByField) {
             playersList.sort([] (const IPLDao firstPlayer, const IPLDao secondPlayer) {
                 return firstPlayer.bowlingAverage > secondPlayer.bowlingAverage && ((firstPlayer.fourWickets * 4) + (firstPlayer.fiveWickets * 5)) >
                                                                         ((secondPlayer.fourWickets * 4) + (secondPlayer.fiveWickets * 5)); });
+            break;
+        case BATTING_AND_BOWLING_AVERAGE:
+            playersList = bowlerList;
+            playersList.sort([] (const IPLDao firstPlayer, const IPLDao secondPlayer) {
+                return firstPlayer.battingAverage > secondPlayer.battingAverage && firstPlayer.bowlingAverage > secondPlayer.bowlingAverage; });
             break;
     }
     return playersList;

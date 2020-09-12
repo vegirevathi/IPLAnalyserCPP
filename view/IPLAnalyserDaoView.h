@@ -15,6 +15,7 @@ public:
     void displayMenu();
     void displayBatsmanData(list<IPLDao> playersData);
     void displayBowlersData(list<IPLDao> playersData);
+    void displayBothBatsmanAndBowlerData(list<IPLDao> playersData);
 };
 
 void IPLAnalyserDaoView::displayWelcomeMessage() {
@@ -44,7 +45,8 @@ void IPLAnalyserDaoView::displayMenu() {
     cout << "Enter 12 to get top striking rate with highest 4 wickets and 5 wickets" << endl;
     cout << "Enter 13 to get top striking rate and bowling average players" << endl;
     cout << "Enter 14 to get top bowling average and maximum wickets" << endl;
-    cout << "Enter 15 to quit" << endl;
+    cout << "Enter 15 to get best batting and bowling averages" << endl;
+    cout << "Enter 16 to quit" << endl;
     cout << "Enter choice" << endl;
 }
 
@@ -75,6 +77,20 @@ void IPLAnalyserDaoView::displayBowlersData(list<IPLDao> playersData) {
         cout << "Economy rate: " << playerNum->economyRate << endl;
         cout << "Four Wickets: " << playerNum->fourWickets << endl;
         cout << "Five Wickets: " << playerNum->fiveWickets << endl;
+        cout << endl;
+    }
+}
+
+void IPLAnalyserDaoView::displayBothBatsmanAndBowlerData(list<IPLDao> playersData) {
+    int count = 0;
+    int playerCount = displayPlayerCount();
+    for(auto playerNum = playersData.begin(); count < playerCount; playerNum++, count++) {
+        cout << endl;
+        cout << "Player Name: " << playerNum->player << endl;
+        cout << "Bowling Average: " << playerNum->bowlingAverage << endl;
+        cout << "Bowler Striking Rate: " << playerNum->bowlingStrikeRate << endl;
+        cout << "Batting Average: " << playerNum->battingAverage << endl;
+        cout << "Batting Strike rate: " << playerNum->battingStrikeRate << endl;
         cout << endl;
     }
 }
